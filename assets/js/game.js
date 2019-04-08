@@ -64,7 +64,7 @@
                 name: "Hub Life",
                 artist: "James Cutler",
                 youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=5",
-                desc: "This was something I scraped together for my HubSpot new hire project."
+                desc: "This was something I scraped together for my HubSpot new hire project. At about 1:40 is when it gets good."
             },
             {
                 name: "Live Wire",
@@ -257,6 +257,8 @@
         document.querySelector('#video-header span').innerHTML = "'" + url.name + "'" + " by " + url.artist;
         if (url.desc){
             document.querySelector('#video-footer span').innerHTML = url.desc; 
+        } else {
+            document.querySelector('#video-footer span').innerHTML = "";
         }
         document.getElementById('video-lightbox').setAttribute('style',"display:block");
     }
