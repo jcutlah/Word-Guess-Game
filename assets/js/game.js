@@ -10,42 +10,81 @@
         chosenWords: [],
         words: [
             {
+                name: "go robot",
+                artist: "Red Hot Chili Peppers",
+                img: "",
+                youtube: "https://www.youtube.com/embed/HI-8CVixZ5o?autoplay=1&start=20"            
+            },
+            {
+                name: "easy lover",
+                artist: "Philip Bailey and Phil Collins",
+                img: "",
+                youtube: "https://www.youtube.com/embed/JkRKT6T0QLg?autoplay=1&start=20"            
+            },
+            {
+                name: "in a big country",
+                artist: "Big Country",
+                img: "",
+                youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1&start=20"            
+            },
+            {
                 name: "africa",
+                artist: "Toto",
                 img: "",
                 youtube: "https://www.youtube.com/embed/FTQbiNvZqaY?autoplay=1",
-                desc: "Couldn't find a YouTube"            
+                desc: ""            
             },
             {
                 name: "kickstart my heart",
+                artist: "Mötley Crüe",
                 img: "",
-                youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1"            
+                youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1&start=20"            
             },
             {
                 name: "spirit of radio",
+                artist: "Rush",
                 img: "",
-                youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1"            
+                youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1",
+                desc: "Picture me belting this out on full falsetto at a karaoke bar in Utah."            
             },
             {
-                name: "fade to black",
+                name: "blackened",
+                artist: "Metallica",
                 img: "",
-                youtube: "https://www.youtube.com/embed/WEQnzs8wl6E?autoplay=1"
+                youtube: "https://www.youtube.com/embed/DhFmdamo1vg?autoplay=1"
             },
             {
                 name: "just a girl",
+                artist: "No Doubt",
                 youtube: "https://www.youtube.com/embed/PHzOOQfhPFg?autoplay=1"
             },
             {
                 name: "hub life",
-                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4"
+                artist: "James Cutler",
+                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4",
+                desc: "This was something I scraped together for my HubSpot new hire project."
             },
             {
                 name: "live wire",
+                artist: "Mötley Crüe",
                 youtube: "https://www.youtube.com/embed/Ahq4blDfU5s?autoplay=1"
             },
             {
                 name: "feel good inc",
+                artist: "Gorillaz",
                 youtube: "https://www.youtube.com/embed/HyHNuVaZJ-k?autoplay=1&start=7"
+            },
+            {
+                name: "take on me",
+                artist: "Aha",
+                youtube: "https://www.youtube.com/embed/djV11Xbc914?autoplay=1"
+            },
+            {
+                name: "Der Kommissar",
+                artist: "After the Fire",
+                youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1"
             }
+
         ],
         randomNumGenerator: function(){
             return Math.floor(Math.random() * Math.floor(this.words.length));
@@ -192,7 +231,7 @@
         document.querySelector('#video-lightbox').setAttribute('style','display:none');
     }
     function victory(){
-        showVideo(computer.choiceMeta.youtube);
+        showVideo(computer.choiceMeta);
         document.getElementById('game-status').innerHTML = "Victory!!!";
         document.getElementById('game-info').parentElement.classList.remove('live');
         player.numWins ++;

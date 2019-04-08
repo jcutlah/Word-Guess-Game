@@ -35,6 +35,12 @@
 .live #game-info {
     opacity: 0;
 }
+#new-game-prompt {
+    display: block;
+}
+.live #new-game-prompt {
+    display: none;
+}
 #game-info {
     transition: opacity 1s ease;
     position: static;
