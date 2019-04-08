@@ -31,8 +31,8 @@
                 youtube: "https://www.youtube.com/embed/WEQnzs8wl6E?autoplay=1"
             },
             {
-                name: "different people",
-                youtube: "https://www.youtube.com/embed/IxlS_Zl8qUE?autoplay=1&start=5"
+                name: "just a girl",
+                youtube: "https://www.youtube.com/embed/PHzOOQfhPFg?autoplay=1"
             },
             {
                 name: "hub life",
