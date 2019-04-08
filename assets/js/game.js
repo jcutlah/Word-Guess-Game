@@ -18,12 +18,12 @@
             {
                 name: "kickstart my heart",
                 img: "",
-                youtube: "https://www.youtube.com/embed/NrOemQaEJGU?autoplay=1"            
+                youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1"            
             },
             {
                 name: "spirit of radio",
                 img: "",
-                youtube: "https://www.youtube.com/embed/5Tq-UsaRchI?autoplay=1"            
+                youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1"            
             },
             {
                 name: "fade to black",
@@ -36,7 +36,7 @@
             },
             {
                 name: "hub life",
-                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=3"
+                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4"
             }
         ],
         randomNumGenerator: function(){
