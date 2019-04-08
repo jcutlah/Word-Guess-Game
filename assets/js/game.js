@@ -5,77 +5,79 @@
         choiceMeta:{
             name:"",
             img:"",
-            youtube:""
+            youtube:"",
+            artist:"",
+            desc:""
         },
         chosenWords: [],
         words: [
             {
-                name: "go robot",
+                name: "Go Robot",
                 artist: "Red Hot Chili Peppers",
                 img: "",
                 youtube: "https://www.youtube.com/embed/HI-8CVixZ5o?autoplay=1&start=20"            
             },
             {
-                name: "easy lover",
+                name: "Easy Lover",
                 artist: "Philip Bailey and Phil Collins",
                 img: "",
                 youtube: "https://www.youtube.com/embed/JkRKT6T0QLg?autoplay=1&start=20"            
             },
             {
-                name: "in a big country",
+                name: "In A Big Country",
                 artist: "Big Country",
                 img: "",
                 youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1&start=20"            
             },
             {
-                name: "africa",
+                name: "Africa",
                 artist: "Toto",
                 img: "",
                 youtube: "https://www.youtube.com/embed/FTQbiNvZqaY?autoplay=1",
                 desc: ""            
             },
             {
-                name: "kickstart my heart",
+                name: "Kickstart My Heart",
                 artist: "Mötley Crüe",
                 img: "",
                 youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1&start=20"            
             },
             {
-                name: "spirit of radio",
+                name: "Spirit Of Radio",
                 artist: "Rush",
                 img: "",
                 youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1",
                 desc: "Picture me belting this out on full falsetto at a karaoke bar in Utah."            
             },
             {
-                name: "blackened",
+                name: "Blackened",
                 artist: "Metallica",
                 img: "",
                 youtube: "https://www.youtube.com/embed/DhFmdamo1vg?autoplay=1"
             },
             {
-                name: "just a girl",
+                name: "Just A Girl",
                 artist: "No Doubt",
                 youtube: "https://www.youtube.com/embed/PHzOOQfhPFg?autoplay=1"
             },
             {
-                name: "hub life",
+                name: "Hub Life",
                 artist: "James Cutler",
                 youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4",
                 desc: "This was something I scraped together for my HubSpot new hire project."
             },
             {
-                name: "live wire",
+                name: "Live Wire",
                 artist: "Mötley Crüe",
                 youtube: "https://www.youtube.com/embed/Ahq4blDfU5s?autoplay=1"
             },
             {
-                name: "feel good inc",
+                name: "Feel Good Inc",
                 artist: "Gorillaz",
                 youtube: "https://www.youtube.com/embed/HyHNuVaZJ-k?autoplay=1&start=7"
             },
             {
-                name: "take on me",
+                name: "Take On Me",
                 artist: "Aha",
                 youtube: "https://www.youtube.com/embed/djV11Xbc914?autoplay=1"
             },
@@ -111,11 +113,13 @@
                 document.getElementById('game-status').innerText = "You broke the game you're so good!!!";
                 document.getElementById('new-game-prompt').innerHTML = "It appears the computer has no new words for you to guess at."
             }
-            this.wordChoice = this.words[randomNum].name;
+            this.wordChoice = this.words[randomNum].name.toLowerCase();
             console.log("word choice: " + this.wordChoice);
-            computer.choiceMeta.name = this.wordChoice;
+            computer.choiceMeta.name = this.words[randomNum].name;
             computer.choiceMeta.img = this.words[randomNum].img;
             computer.choiceMeta.youtube = this.words[randomNum].youtube;
+            computer.choiceMeta.artist = this.words[randomNum].artist;
+            computer.choiceMeta.desc = this.words[randomNum].desc;
             
             return this.wordChoice;
         }
@@ -223,7 +227,8 @@
         player.active = false;
     }
     function showVideo(url){
-        document.querySelector('#video-lightbox iframe').setAttribute('src',url);
+        document.querySelector('#video-lightbox iframe').setAttribute('src',url.youtube);
+        document.querySelector('#video-header span').innerHTML = "'" + url.name + "'" + " by " + url.artist;
         document.getElementById('video-lightbox').setAttribute('style',"display:block");
     }
     function hideVideo(){
