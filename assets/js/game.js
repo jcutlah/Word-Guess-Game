@@ -37,6 +37,14 @@
             {
                 name: "hub life",
                 youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4"
+            },
+            {
+                name: "live wire",
+                youtube: "https://www.youtube.com/embed/Ahq4blDfU5s?autoplay=1"
+            },
+            {
+                name: "feel good inc",
+                youtube: "https://www.youtube.com/embed/HyHNuVaZJ-k?autoplay=1&start=7"
             }
         ],
         randomNumGenerator: function(){
