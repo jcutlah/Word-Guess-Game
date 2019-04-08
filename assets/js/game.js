@@ -15,19 +15,19 @@
                 name: "Go Robot",
                 artist: "Red Hot Chili Peppers",
                 img: "",
-                youtube: "https://www.youtube.com/embed/HI-8CVixZ5o?autoplay=1&start=20"            
+                youtube: "https://www.youtube.com/embed/HI-8CVixZ5o?autoplay=1"            
             },
             {
                 name: "Easy Lover",
                 artist: "Philip Bailey and Phil Collins",
                 img: "",
-                youtube: "https://www.youtube.com/embed/JkRKT6T0QLg?autoplay=1&start=20"            
+                youtube: "https://www.youtube.com/embed/JkRKT6T0QLg?autoplay=1"            
             },
             {
                 name: "In A Big Country",
                 artist: "Big Country",
                 img: "",
-                youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1&start=20"            
+                youtube: "https://www.youtube.com/embed/657TZDHZqj4?autoplay=1"            
             },
             {
                 name: "Africa",
@@ -40,7 +40,7 @@
                 name: "Kickstart My Heart",
                 artist: "Mötley Crüe",
                 img: "",
-                youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1&start=20"            
+                youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1&start=25"            
             },
             {
                 name: "Spirit Of Radio",
@@ -63,7 +63,7 @@
             {
                 name: "Hub Life",
                 artist: "James Cutler",
-                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=4",
+                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=5",
                 desc: "This was something I scraped together for my HubSpot new hire project."
             },
             {
@@ -85,22 +85,26 @@
                 name: "Der Kommissar",
                 artist: "After the Fire",
                 youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1"
+            },
+            {
+                name: "Dig",
+                artist: "Incubus",
+                youtube: "https://www.youtube.com/embed/nMsZ6wkZWhA?autoplay=1"
+            },
+            {
+                name: "Got The lIfe",
+                artist: "Korn",
+                youtube: "https://www.youtube.com/embed/VAWjsVoDpm0?autoplay=1"
             }
-
         ],
         randomNumGenerator: function(){
             return Math.floor(Math.random() * Math.floor(this.words.length));
         },
         isDupe: function(word){
-            console.log('running isDupe() for ' + word);
-            console.log(this.chosenWords);
-            console.log(this.chosenWords.indexOf(word));
             if (this.chosenWords.indexOf(word) == -1){
                 this.chosenWords.push(word);
-                console.log(this.chosenWords);
                 return false;
             } else {
-                console.log('dupe found');
                 return true;
             }
         },
@@ -135,6 +139,12 @@
             letter: "",
             indices: [],
             guessedAlready: false
+        },
+        bummedOut: {
+            youtube: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=true",
+            artist: "Rick Astley",
+            name: "Never Gonna Give You Up",
+            desc: "Cheer up, bud. One more game?"
         }
     };
     
@@ -148,21 +158,37 @@
         }
         return indices;
     }
-    function loadWordContainer(word){
-        for (i=0;i<word.length;i++) {
-            var letter = document.createElement('span');
-            var letterContainer = document.createElement('div');
-            letterContainer.setAttribute('class', 'letter-wrapper unsolved');
-            if (word[i] == " "){
-                letterContainer.classList.remove('unsolved');
-                letterContainer.classList.add('space');
+    function loadWordContainer(string){
+        var words = string.split(' ');
+        // console.log(words);
+        for (r=0;r<words.length;r++){
+            // console.log('-----outerloop-----');
+            var wordWrapper = document.createElement('div');
+            wordWrapper.classList.add('word-wrapper','clearfix');
+            // wordWrapper.classList.add();
+            for (i=0;i<words[r].length;i++) {
+                // console.log('-----sub-----')
+                var letter = document.createElement('span');
+                var letterContainer = document.createElement('div');
+                letterContainer.setAttribute('class', 'letter-wrapper unsolved');
+                letterContainer.appendChild(letter);
+                wordWrapper.appendChild(letterContainer);
+                // console.log(wordWrapper);
+                
             }
-            letterContainer.appendChild(letter);
-            document.getElementById('word-wrapper').appendChild(letterContainer);
-        }
+            // console.log('subloop complete. creating space');
+            if (r + 1 < words.length){
+                var newLetter = document.createElement('span');
+                var newLetterContainer = document.createElement('div');
+                newLetterContainer.setAttribute('class', 'letter-wrapper space');
+                newLetterContainer.appendChild(newLetter);
+                wordWrapper.appendChild(newLetterContainer);
+            }
+            document.getElementById('word-wrapper-container').appendChild(wordWrapper);    
+        }    
     }
     function clearContainers(){
-        document.getElementById('word-wrapper').innerHTML = "";
+        document.getElementById('word-wrapper-container').innerHTML = "";
         document.getElementById('letters').innerHTML = "";
     }
     function writeLetters(){
@@ -182,7 +208,6 @@
             } else {
                 guess = guess + letterWrappers[i].innerHTML;
             }
-            
         }
         if (guess.toLowerCase() == computer.wordChoice){
             return true;
@@ -225,10 +250,14 @@
         document.getElementById('game-info').parentElement.classList.remove('live');
         document.querySelector('#losses span').innerHTML = player.numLosses;
         player.active = false;
+        showVideo(player.bummedOut);
     }
     function showVideo(url){
         document.querySelector('#video-lightbox iframe').setAttribute('src',url.youtube);
         document.querySelector('#video-header span').innerHTML = "'" + url.name + "'" + " by " + url.artist;
+        if (url.desc){
+            document.querySelector('#video-footer span').innerHTML = url.desc; 
+        }
         document.getElementById('video-lightbox').setAttribute('style',"display:block");
     }
     function hideVideo(){
