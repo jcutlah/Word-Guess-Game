@@ -47,7 +47,7 @@
                 artist: "Rush",
                 img: "",
                 youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1",
-                desc: "Picture me belting this out on full falsetto at a karaoke bar in Utah."            
+                desc: "Picture me belting this out a la falsetto at a karaoke bar in Utah. Or dont. Bit it did happen on more than one occasion."            
             },
             {
                 name: "Blackened",
@@ -191,12 +191,19 @@
         document.getElementById('word-wrapper-container').innerHTML = "";
         document.getElementById('letters').innerHTML = "";
     }
-    function writeLetters(){
+    function writeLetters(showAll){
         var letters = document.querySelectorAll('.letter-wrapper span');
+        if (showAll) {
+            for(i=0;i<computer.wordChoice.length;i++){
+                letters[i].innerHTML = computer.wordChoice[i].toUpperCase();
+                letters[i].parentElement.classList.remove('unsolved');
+            }
+        } else {
             for(i=0;i<player.guess.indices.length;i++){
                 letters[player.guess.indices[i]].innerHTML = player.guess.letter;
                 letters[player.guess.indices[i]].parentElement.classList.remove('unsolved');
             }
+        }
     }
     function checkAnswer(){
         var answer = "";
@@ -285,7 +292,7 @@
             player.guess.indices = isPartOfArray(player.guess.letter, computer.wordChoice);
             if (player.guess.indices.length != 0){
                 // Use index values to set the innerHTML of the correct element(s) on the page/adjust CSS for proper display
-                writeLetters();
+                writeLetters(false);
                 adjustGuesses(player.guess.letter, true);
             } else {
                 // Increment down the player's number of guesses, return number of guesses left, print to screen
@@ -294,8 +301,12 @@
             // Read the letters on the page, determine if the resulting word matches the computer's choice
             if (checkAnswer()){
                 victory();
+
+            } else if (player.numGuesses == 2) {
+                showHint();
             } else if (player.numGuesses == 0){
                 bitterLoss();
+                writeLetters(true);
             }
             
         } 
