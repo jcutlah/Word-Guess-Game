@@ -315,6 +315,7 @@ window.addEventListener('DOMContentLoaded', function(){
     document.querySelector('#game-info button').addEventListener("click",function(){
         document.onkeyup = keyInput;
         newGame();
+        document.getElementById('mobile').focus();
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){
         hideVideo();

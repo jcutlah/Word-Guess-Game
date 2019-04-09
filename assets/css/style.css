@@ -106,4 +106,12 @@
     font-size: 23px;
     padding-top: 10px;
 }
+#mobile-input {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
 
