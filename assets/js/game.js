@@ -164,7 +164,7 @@
         for (r=0;r<words.length;r++){
             // console.log('-----outerloop-----');
             var wordWrapper = document.createElement('div');
-            wordWrapper.classList.add('word-wrapper','clearfix');
+            wordWrapper.classList.add('word-wrapper','clearfix','col-auto');
             // wordWrapper.classList.add();
             for (i=0;i<words[r].length;i++) {
                 // console.log('-----sub-----')
@@ -313,9 +313,13 @@
     }
 window.addEventListener('DOMContentLoaded', function(){
     document.querySelector('#game-info button').addEventListener("click",function(){
-        document.onkeyup = keyInput;
+        // document.onkeyup = keyInput;
+        
         newGame();
         document.getElementById('mobile').focus();
+        document.addEventListener('keyup touchend', function(e){
+            keyInput(e);
+        });
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){
         hideVideo();
