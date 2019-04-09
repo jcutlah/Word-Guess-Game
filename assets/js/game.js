@@ -283,7 +283,7 @@
     }
     function keyInput(e){
         var reLetter = /^[A-Z,a-z]{1}$/;
-        player.guess.letter = e.code.replace('Key','');
+        player.guess.letter = e.key.toUpperCase();
         if (reLetter.test(player.guess.letter) && player.active == true){
             //Things that happen once a user types a valid key entry (any letter a-z):
             // Check if they've already guessed it/add it it to list of already guessed letters, print to screen
@@ -320,9 +320,33 @@ window.addEventListener('DOMContentLoaded', function(){
         document.addEventListener('keyup', function(e){
             keyInput(e);
         });
-        document.getElementById('mobile').addEventListener('touchend', function(e){
-            keyInput(e);
-        });
+        // document.getElementById('mobile').addEventListener('touchend', function(e){
+        //     keyInput(e);
+        // });
+        var input = document.getElementById('mobile'),
+        oldValue,
+        newValue,
+        difference = function(value1, value2) {
+        var output = [];
+        for(i = 0; i < value2.length; i++) {
+            if(value1[i] !== value2[i]) {
+            output.push(value2[i]);
+            }
+        }
+        return output.join("");
+        },
+        keyDownHandler = function(e) {
+        oldValue = input.value;
+        document.getElementById("onkeydown-result").innerHTML = input.value;
+        },
+        inputHandler = function(e) {
+        newValue = input.value;
+        document.getElementById("oninput-result").innerHTML = input.value;
+        document.getElementById("typedvalue-result").innerHTML = difference(oldValue, newValue);
+        };
+
+    input.addEventListener('keydown', keyDownHandler);
+    input.addEventListener('input', inputHandler);
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){
         hideVideo();
