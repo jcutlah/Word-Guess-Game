@@ -317,7 +317,10 @@ window.addEventListener('DOMContentLoaded', function(){
         
         newGame();
         document.getElementById('mobile').focus();
-        document.addEventListener('keyup touchend', function(e){
+        document.addEventListener('keyup', function(e){
+            keyInput(e);
+        });
+        document.getElementById('mobile').addEventListener('touchend', function(e){
             keyInput(e);
         });
     });
