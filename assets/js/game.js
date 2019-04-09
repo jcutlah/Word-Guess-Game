@@ -282,7 +282,6 @@
         player.active = false;
     }
     function keyInput(e){
-        console.log(e);
         var reLetter = /^[A-Z,a-z]{1}$/;
         // player.guess.letter = e.key.toUpperCase();
         player.guess.letter = e.toUpperCase();
@@ -314,18 +313,7 @@
         } 
     }
 window.addEventListener('DOMContentLoaded', function(){
-    document.querySelector('#game-info button').addEventListener("click",function(){
-        // document.onkeyup = keyInput;
-        
-        newGame();
-        document.getElementById('mobile').focus();
-        // document.addEventListener('keyup', function(e){
-        //     keyInput(e);
-        // });
-        // document.getElementById('mobile').addEventListener('touchend', function(e){
-        //     keyInput(e);
-        // });
-        var input = document.getElementById('mobile'),
+    var input = document.getElementById('mobile'),
         oldValue,
         newValue,
         difference = function(value1, value2) {
@@ -339,22 +327,53 @@ window.addEventListener('DOMContentLoaded', function(){
         },
         keyDownHandler = function(e) {
             oldValue = input.value;
-            document.getElementById("onkeydown-result").innerHTML = input.value;
         },
         inputHandler = function(e) {
-            console.log('inputHandler() running');
             newValue = input.value;
-            document.getElementById("oninput-result").innerHTML = input.value;
-            document.getElementById("typedvalue-result").innerHTML = difference(oldValue, newValue);
             return difference(oldValue, newValue);
         };
         input.addEventListener('keydown', function(){
             keyDownHandler();
         });
         input.addEventListener('input', function(){
-            console.log('input change detected');
             keyInput(inputHandler());
         });
+    document.querySelector('#game-info button').addEventListener("click",function(){
+        // document.onkeyup = keyInput;
+        
+        newGame();
+        document.getElementById('mobile').focus();
+        // document.addEventListener('keyup', function(e){
+        //     keyInput(e);
+        // });
+        // document.getElementById('mobile').addEventListener('touchend', function(e){
+        //     keyInput(e);
+        // });
+        // var input = document.getElementById('mobile'),
+        // oldValue,
+        // newValue,
+        // difference = function(value1, value2) {
+        //     var output = [];
+        //     for(i = 0; i < value2.length; i++) {
+        //         if(value1[i] !== value2[i]) {
+        //             output.push(value2[i]);
+        //         }
+        //     }
+        //     return output.join("");
+        // },
+        // keyDownHandler = function(e) {
+        //     oldValue = input.value;
+        // },
+        // inputHandler = function(e) {
+        //     newValue = input.value;
+        //     return difference(oldValue, newValue);
+        // };
+        // input.addEventListener('keydown', function(){
+        //     keyDownHandler();
+        // });
+        // input.addEventListener('input', function(){
+        //     keyInput(inputHandler());
+        // });
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){
         hideVideo();
