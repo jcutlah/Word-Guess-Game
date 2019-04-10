@@ -309,7 +309,7 @@
                 bitterLoss();
                 writeLetters(true);
             }
-            
+            document.querySelector('#mobile').value = '';
         } 
     }
 window.addEventListener('DOMContentLoaded', function(){
@@ -333,11 +333,16 @@ window.addEventListener('DOMContentLoaded', function(){
             return difference(oldValue, newValue);
         };
         input.addEventListener('keydown', function(){
+            // debugger;
             keyDownHandler();
         });
         input.addEventListener('input', function(){
             keyInput(inputHandler());
         });
+    document.addEventListener('touchend', function(){
+        alert('touchend fired');
+        document.getElementById('mobile').focus();
+    });
     document.querySelector('#game-info button').addEventListener("click",function(){
         // document.onkeyup = keyInput;
         

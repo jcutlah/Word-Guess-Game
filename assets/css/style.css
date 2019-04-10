@@ -40,6 +40,9 @@
 .live #game-info {
     opacity: 0;
 }
+#instructions {
+    height: 135px;
+}
 #new-game-prompt {
     display: block;
 }
@@ -107,11 +110,13 @@
     padding-top: 10px;
 }
 #mobile-input {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 1px;
+    margin: 0 auto;
+    height: auto;
+    width: 80%;
     overflow: hidden;
 }
+#mobile-input input {
+    text-align: center;
+}
+
 
