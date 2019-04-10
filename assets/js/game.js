@@ -340,7 +340,6 @@ window.addEventListener('DOMContentLoaded', function(){
             keyInput(inputHandler());
         });
     document.addEventListener('touchend', function(){
-        alert('touchend fired');
         document.getElementById('mobile').focus();
     });
     document.querySelector('#game-info button').addEventListener("click",function(){
