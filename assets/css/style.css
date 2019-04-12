@@ -118,5 +118,15 @@
 #mobile-input input {
     text-align: center;
 }
-
+@media (max-width: 768px){
+    .letter-wrapper {
+        width: 20px;
+    }
+    .letter-wrapper span {
+        font-size: 30px;
+    }
+    #word-wrapper-container {
+        margin-top: 50px;
+    }
+}
 

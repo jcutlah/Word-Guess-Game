@@ -12,46 +12,43 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Guess It</h5>
-                        <div class="card-text" id="wins">
+            <div class="col-12">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-3 col-6" id="wins">
                                 Wins: <span></span>
                         </div>
-                        <div class="card-text" id="losses">
+                        <div class="col-md-3 col-6" id="losses">
                             Losses: <span></span>
                         </div>
-                        <div class="card-text" id="guesses-remaining">
-                            Incorrect Guesses Remaining: <span></span>
+                        <div class="col-md-3 col-6" id="guesses-remaining">
+                            Guesses Left: <span></span>
                         </div>
-                        <div class="card-text" id="letters-guessed">
-                            <p>Letters guessed:</p>
-                            <p id='letters'></p>
+                        <div class="col-md-3 col-6" id="letters-guessed">
+                            <p>Letters guessed: <span id='letters'></span></p>
                         </div>
                     </div>
                 </div>
-                
                 <div class="card" id="instructions">
                     <div class="card-body">
                         <div class="card-text" id="game-info">
                             <p id="game-status">New Game</p>
                             <div id="new-game-prompt">
                                 <p>Click the button below to start a new game.</p>
-                                <button>Let's Play!</button>
+                                <button class="btn btn-dark">Let's Play!</button>
                             </div>
                         </div>
                         <div id='game-on'>
                             <p>Game On...</p>
                             <p>Try and guess the word or phrase. Letters only, let's go!!</p>
-                            <p id="mobile-input"><input type="text" id="mobile"></p>
+                            <p id="mobile-input"><input type="text" id="mobile" class="form-control"></p>
                         </div>
                         
                     </div>
                     <p></p>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="container-fluid">
                     <div id="word-wrapper-container" class="justify-content-center row">
     

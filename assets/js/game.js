@@ -347,37 +347,6 @@ window.addEventListener('DOMContentLoaded', function(){
         
         newGame();
         document.getElementById('mobile').focus();
-        // document.addEventListener('keyup', function(e){
-        //     keyInput(e);
-        // });
-        // document.getElementById('mobile').addEventListener('touchend', function(e){
-        //     keyInput(e);
-        // });
-        // var input = document.getElementById('mobile'),
-        // oldValue,
-        // newValue,
-        // difference = function(value1, value2) {
-        //     var output = [];
-        //     for(i = 0; i < value2.length; i++) {
-        //         if(value1[i] !== value2[i]) {
-        //             output.push(value2[i]);
-        //         }
-        //     }
-        //     return output.join("");
-        // },
-        // keyDownHandler = function(e) {
-        //     oldValue = input.value;
-        // },
-        // inputHandler = function(e) {
-        //     newValue = input.value;
-        //     return difference(oldValue, newValue);
-        // };
-        // input.addEventListener('keydown', function(){
-        //     keyDownHandler();
-        // });
-        // input.addEventListener('input', function(){
-        //     keyInput(inputHandler());
-        // });
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){
         hideVideo();
