@@ -14,7 +14,7 @@
             {
                 name: "Go Robot",
                 artist: "Red Hot Chili Peppers",
-                img: "",
+                img: "background-blur-clean-531880.jpg",
                 youtube: "https://www.youtube.com/embed/HI-8CVixZ5o?autoplay=1"            
             },
             {
@@ -26,75 +26,83 @@
             {
                 name: "In A Big Country",
                 artist: "Big Country",
-                img: "",
+                img: "4k-wallpaper-clouds-dawn-1261728.jpg",
                 youtube: "https://www.youtube.com/embed/657TZDHZqj4?autoplay=1"            
             },
             {
                 name: "Africa",
                 artist: "Toto",
-                img: "",
+                img: "background-brown-carpentry-326311.jpg",
                 youtube: "https://www.youtube.com/embed/FTQbiNvZqaY?autoplay=1",
                 desc: ""            
             },
             {
                 name: "Kickstart My Heart",
                 artist: "Mötley Crüe",
-                img: "",
+                img: "art-artistic-background-1020315.jpg",
                 youtube: "https://www.youtube.com/embed/CmXWkMlKFkI?autoplay=1&start=25"            
             },
             {
                 name: "Spirit Of Radio",
                 artist: "Rush",
-                img: "",
+                img: "contemporary-dark-data-669996.jpg",
                 youtube: "https://www.youtube.com/embed/F179XHVn8S8?autoplay=1",
                 desc: "Picture me belting this out a la falsetto at a karaoke bar in Utah. Or dont. Bit it did happen on more than one occasion."            
             },
             {
                 name: "Blackened",
                 artist: "Metallica",
-                img: "",
+                img: "4k-wallpaper-architecture-background-1308624.jpg",
                 youtube: "https://www.youtube.com/embed/DhFmdamo1vg?autoplay=1"
             },
             {
                 name: "Just A Girl",
                 artist: "No Doubt",
-                youtube: "https://www.youtube.com/embed/PHzOOQfhPFg?autoplay=1"
+                youtube: "https://www.youtube.com/embed/PHzOOQfhPFg?autoplay=1",
+                img: ""
             },
             {
                 name: "Hub Life",
                 artist: "James Cutler",
-                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1&start=5",
-                desc: "This was something I scraped together for my HubSpot new hire project. At about 1:40 is when it gets good."
+                youtube: "https://www.youtube.com/embed/IQV3j3w6Fpg?autoplay=1",
+                desc: "This was something I scraped together for my HubSpot new hire project. At about 1:40 is when it gets good.",
+                img: "black-background-blue-close-up-604684.jpg"
             },
             {
                 name: "Live Wire",
                 artist: "Mötley Crüe",
-                youtube: "https://www.youtube.com/embed/Ahq4blDfU5s?autoplay=1"
+                youtube: "https://www.youtube.com/embed/Ahq4blDfU5s?autoplay=1",
+                img: "art-black-background-blur-1040499.jpg"
             },
             {
                 name: "Feel Good Inc",
                 artist: "Gorillaz",
-                youtube: "https://www.youtube.com/embed/HyHNuVaZJ-k?autoplay=1&start=7"
+                youtube: "https://www.youtube.com/embed/HyHNuVaZJ-k?autoplay=1&start=7",
+                img: "animal-dawn-desktop-backgrounds-875858.jpg"
             },
             {
                 name: "Take On Me",
                 artist: "Aha",
+                img: "pencilSketch.jpg",
                 youtube: "https://www.youtube.com/embed/djV11Xbc914?autoplay=1"
             },
             {
                 name: "Der Kommissar",
                 artist: "After the Fire",
-                youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1"
+                youtube: "https://www.youtube.com/embed/vBfFDTPPlaM?autoplay=1",
+                img: 'architecture-buildings-city-313782.jpg'
             },
             {
                 name: "Dig",
                 artist: "Incubus",
-                youtube: "https://www.youtube.com/embed/nMsZ6wkZWhA?autoplay=1"
+                youtube: "https://www.youtube.com/embed/nMsZ6wkZWhA?autoplay=1",
+                img: "background-close-up-color-1227648.jpg"
             },
             {
                 name: "Got The lIfe",
                 artist: "Korn",
-                youtube: "https://www.youtube.com/embed/VAWjsVoDpm0?autoplay=1"
+                youtube: "https://www.youtube.com/embed/VAWjsVoDpm0?autoplay=1",
+                img: 'backlit-chiemsee-dawn-1363876.jpg'
             }
         ],
         randomNumGenerator: function(){
@@ -255,11 +263,17 @@
         player.numLosses++;
         document.getElementById('game-status').innerHTML = "Loser!!!";
         document.getElementById('game-info').parentElement.classList.remove('live');
+        document.querySelector("#new-game-prompt button").innerHTML = "Let's Do This";
         document.querySelector('#losses span').innerHTML = player.numLosses;
         player.active = false;
         showVideo(player.bummedOut);
     }
     function showVideo(url){
+        if (computer.choiceMeta.img){
+            document.querySelector('body').classList.add('body-background-image');
+        } else {
+            document.querySelector('body').classList.remove('body-background-image');
+        }
         document.querySelector('#video-lightbox iframe').setAttribute('src',url.youtube);
         document.querySelector('#video-header span').innerHTML = "'" + url.name + "'" + " by " + url.artist;
         if (url.desc){
@@ -273,9 +287,14 @@
         document.querySelector('#video-lightbox iframe').setAttribute('src','');
         document.querySelector('#video-lightbox').setAttribute('style','display:none');
     }
+    function setBackground(){
+        document.querySelector('body').setAttribute('style','background-image: url(assets/images/'+ computer.choiceMeta.img + '); background-repeat: no-repeat; background-size: cover;');
+    }
     function victory(){
         showVideo(computer.choiceMeta);
+        setBackground();
         document.getElementById('game-status').innerHTML = "Victory!!!";
+        document.querySelector("#new-game-prompt button").innerHTML = "Play Again!";
         document.getElementById('game-info').parentElement.classList.remove('live');
         player.numWins ++;
         document.querySelector('#wins span').innerHTML = player.numWins;
@@ -346,6 +365,10 @@ window.addEventListener('DOMContentLoaded', function(){
         // document.onkeyup = keyInput;
         
         newGame();
+        document.getElementById('mobile').focus();
+        document.querySelector('#lightbox-close a').click();
+    });
+    document.addEventListener('click',function(){
         document.getElementById('mobile').focus();
     });
     document.querySelector('#lightbox-close a').addEventListener('click',function(){

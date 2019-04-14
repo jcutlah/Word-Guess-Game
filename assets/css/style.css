@@ -52,6 +52,7 @@
 #game-info {
     transition: opacity 1s ease;
     position: static;
+    text-align: center;
 }
 #game-on {
     opacity: 0;
@@ -118,6 +119,24 @@
 #mobile-input input {
     text-align: center;
 }
+.bg-disabled {
+    background-color: #ccc;
+}
+.body-background-image #instructions {
+    background: transparent;
+    border: none;
+    color: #fff;
+}
+.body-background-image .letter-wrapper {
+    color: #fff;
+    text-shadow: 2px 3px 5px #000;
+}
+.body-background-image .unsolved {
+    border-color: #fff;
+}
+.body-background-image #instructions button {
+    border: 3px solid #fff;
+}
 @media (max-width: 768px){
     .letter-wrapper {
         width: 20px;
@@ -126,7 +145,7 @@
         font-size: 30px;
     }
     #word-wrapper-container {
-        margin-top: 50px;
+        margin-bottom: 50px;
     }
 }
 
